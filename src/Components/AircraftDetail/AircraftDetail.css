@@ -1,0 +1,29 @@
+.AircraftDetailsContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* border: 1px solid red; */
+}
+.Heading {
+  text-align: right;
+  padding-right: 10px;
+  /* border: 1px solid green; */
+}
+.Values {
+  /* display: flex; */
+  justify-content: flex-start;
+  text-align: left;
+  /* border: 1px solid blue; */
+}
+.photos {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  /* border: 1px solid orange; */
+}
+.headingTxt {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}

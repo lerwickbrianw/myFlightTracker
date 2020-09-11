@@ -5,63 +5,68 @@ import Button from "react-bootstrap/Button";
 class AircraftDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //   registration: "",
-    };
   }
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target.registration.value);
-    this.props.aircraftDetail(event);
-  };
+  //   handleSubmit = (event) => {
+  //     event.preventDefault();
+  //     console.log(event.target.aircraftDetail.value);
+  //     this.props.aircraftDetail(event);
+  //   };
   render() {
+    const aircraftPhotos = this.props.aircraftPhotos.map((item, index) => {
+      return (
+        <div className="photos">
+          <a href={item.link} target="_blank">
+            <img style={{ height: 200 }} key={index} src={item.image} />
+          </a>
+        </div>
+      );
+    });
     return (
       <div>
-        <div>Aircraft Detail</div>
-        {/* <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            placeholder="Tail Number"
-            onChange={this.handleSearch}
-          />
-          <input onClick={this.handleSubmit} type="submit" value="Search" />
-        </form> */}
-        <form onSubmit={this.handleSubmit}>
+        <div className="headingTxt">Aircraft Details</div>
+        <form onSubmit={this.props.getAircraftDetail}>
           <input
             className="inputCity"
-            // onChange={this.props.handleChange}
-            // value={this.props.registration}
             type="text"
-            name="registration"
+            name="aircraftDetail"
             placeholder="Tail Number..."
           />
           <input type="submit" value="Search" />
-          {/* <input
-            className="inputState"
-            onChange={this.props.handleChange}
-            value={this.props.state}
-            type="text"
-            name="state"
-            placeholder="State..."
-          />
-          <input
-            className="inputCountry"
-            onChange={this.props.handleChange}
-            value={this.props.country}
-            type="text"
-            name="country"
-            placeholder="Country..."
-          /> */}
 
           {/* <Button
             className="getweather"
-            onClick={this.handleSubmit}
+            // onClick={this.props.aircraftDetail}
             variant="secondary"
           >
             Search
           </Button> */}
         </form>
-        {/* <div>{this.props.registration}</div> */}
+        <div className="AircraftDetailsContainer">
+          <div className="Heading">
+            <div>Tail Number: </div>
+            <div>Year: </div>
+            <div>Manufacturer: </div>
+            <div>Model: </div>
+            <div>Serial Number: </div>
+            <div>Registered Owner: </div>
+            <div>Engine(s)</div>
+            <div>Registration Ends: </div>
+            <div>ICAO24 Code: </div>
+          </div>
+          <div className="Values">
+            <div>{this.props.aircraftDetail.registration}</div>
+            <div>{this.props.aircraftDetail.built}</div>
+            <div>{this.props.aircraftDetail.manufacturername}</div>
+            <div>{this.props.aircraftDetail.model}</div>
+            <div>{this.props.aircraftDetail.serialnumber}</div>
+            <div>{this.props.aircraftDetail.owner}</div>
+            <div>{this.props.aircraftDetail.engines}</div>
+            <div>{this.props.aircraftDetail.reguntil}</div>
+            <div>{this.props.aircraftDetail.icao24}</div>
+          </div>
+        </div>
+        <div className="headingTxt">Photos</div>
+        <div className="photos">{aircraftPhotos}</div>
       </div>
     );
   }
