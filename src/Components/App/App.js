@@ -11,8 +11,8 @@ const backendUrl =
   "https://myflighttrackerbackend.herokuapp.com";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       aircraftDetail: "",
       aircraftPhotos: [],
