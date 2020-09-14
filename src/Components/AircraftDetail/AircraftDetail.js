@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import "./AircraftDetail.css";
-import Button from "react-bootstrap/Button";
 
 class AircraftDetail extends Component {
   constructor(props) {
     super(props);
   }
-  //   handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     console.log(event.target.aircraftDetail.value);
-  //     this.props.aircraftDetail(event);
-  //   };
+
   render() {
-    const aircraftPhotos = this.props.aircraftPhotos.map((item, index) => {
+    const aircraftPhotosArray = this.props.aircraftPhotos || [];
+    const aircraftPhotos = aircraftPhotosArray.map((item, index) => {
       return (
         <div className="photos">
           <a href={item.link} target="_blank">
-            <img style={{ height: 200 }} key={index} src={item.image} />
+            <img style={{ height: 200 }} key={index} src={item.image} alt="" />
           </a>
         </div>
       );
@@ -32,14 +28,6 @@ class AircraftDetail extends Component {
             placeholder="Tail Number..."
           />
           <input type="submit" value="Search" />
-
-          {/* <Button
-            className="getweather"
-            // onClick={this.props.aircraftDetail}
-            variant="secondary"
-          >
-            Search
-          </Button> */}
         </form>
         <div className="AircraftDetailsContainer">
           <div className="Heading">

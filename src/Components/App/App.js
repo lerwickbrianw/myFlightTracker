@@ -4,7 +4,7 @@ import axios from "axios";
 import Home from "../Home/Home";
 import AirportDetail from "../AirportDetail/AirportDetail";
 import AircraftDetail from "../AircraftDetail/AircraftDetail";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 const backendUrl =
   process.env.REACT_APP_BACKEND_URL ||
@@ -16,8 +16,22 @@ class App extends Component {
     this.state = {
       aircraftDetail: "",
       aircraftPhotos: [],
+      airportDetail: "",
+      airportRunways: [],
     };
   }
+
+  getAirportDetail = async (event) => {
+    event.preventDefault();
+    console.log(event.target.airportDetail);
+    let airportId = event.target.airportDetail.value.toUpperCase();
+    let response = await axios.get(`${backendUrl}/api/airport/${airportId}`);
+    this.setState({
+      airportDetail: response.data.airport,
+      airportRunways: response.data.runways,
+    });
+    console.log(response.data.runways);
+  };
 
   getAircraftDetail = async (event) => {
     event.preventDefault();
@@ -38,8 +52,10 @@ class App extends Component {
   getAircraftPhotos = async (event) => {
     // event.preventDefault();
     console.log(this.state.aircraftDetail.icao24);
-    let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=a10063&n=10`;
-    //  let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=${this.state.aircraftDetail.icao24}&n=10`;
+    let response = await axios.get(
+      `https://www.airport-data.com/api/ac_thumb.json?m=a10063&n=10`
+    );
+    // let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=${this.state.aircraftDetail.icao24}&n=10`;
     console.log(response.data.data);
     this.setState({
       aircraftPhotos: response.data.data,
@@ -59,7 +75,16 @@ class App extends Component {
             <Route exact path="/" component={() => <Home />} />
             <Route
               path="/api/airport"
-              component={() => <AirportDetail />}
+              handleChange={this.handleChange}
+              airportDetail={this.state.airportDetail}
+              airportRunways={this.state.airportRunways}
+              component={(routerProps) => (
+                <AirportDetail
+                  {...this.state}
+                  {...routerProps}
+                  getAirportDetail={this.getAirportDetail}
+                />
+              )}
             ></Route>
             <Route
               path="/api/aircraft"
