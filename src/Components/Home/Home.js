@@ -29,7 +29,7 @@ class Home extends Component {
     this.setState({
       activeFlights: response.data.states,
     });
-    console.log(this.state.activeFlights);
+    console.log(this.state.activeFlights[0][0]);
   };
   getMapExtents = () => {
     let ne = this.map.getBounds().getNorthEast();
@@ -85,14 +85,37 @@ class Home extends Component {
       ))
     );
     const activeFlights = this.state.activeFlights.map((flight, index) => {
-      return <li key={index}>{flight}</li>;
+      return (
+        <div className="flights" key={flight.index}>
+          <div className="divf">{flight[0]}</div>
+          <div className="divf">{flight[1]}</div>
+          <div className="divf">{flight[2]}</div>
+          <div className="divf">{flight[7]}</div>
+          <div className="divf">{flight[8]}</div>
+          <div className="divf">{flight[9]}</div>
+          <div className="divf">{flight[10]}</div>
+          <div className="divf">{flight[11]}</div>
+        </div>
+      );
     });
 
     return (
       <div>
         <div className="activeFlights">
-          <div>Active Flights</div>
-          <ul>{activeFlights}</ul>
+          <div className="flightTxt">Active Flights</div>
+          <div className="flightcontainer">
+            <div className="flightheading">
+              <div className="divf">ICAO24</div>
+              <div className="divf">Tail Number</div>
+              <div className="divf">Origin</div>
+              <div className="divf">Baro Altitude</div>
+              <div className="divf">On Ground</div>
+              <div className="divf">Velocity</div>
+              <div className="divf">True Track</div>
+              <div className="divf">Verticle Rate</div>
+            </div>
+            <div className="flightdetailscontainer">{activeFlights}</div>
+          </div>
         </div>
         <GoogleMapExample
           onMapIdle={() => {
