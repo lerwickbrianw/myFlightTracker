@@ -38,8 +38,10 @@ class App extends Component {
   getAircraftPhotos = async (event) => {
     // event.preventDefault();
     console.log(this.state.aircraftDetail.icao24);
-    let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=a10063&n=10`;
-    //  let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=${this.state.aircraftDetail.icao24}&n=10`;
+    // let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=a10063&n=10`;
+    let response = await axios.get(
+      `https://www.airport-data.com/api/ac_thumb.json?m=${this.state.aircraftDetail.icao24}&n=10`
+    );
     console.log(response.data.data);
     this.setState({
       aircraftPhotos: response.data.data,

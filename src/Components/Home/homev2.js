@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+
 import "./Home.css";
 import {
   withGoogleMap,
@@ -23,9 +24,7 @@ class Home extends Component {
     this.map = React.createRef();
   }
   componentDidMount = async () => {
-    const response = await Axios.get(
-      `https://Cherokee235:Ilike2Fly@opensky-network.org/api/states/all?lamin=${this.state.swLat}&lomin=${this.state.neLng}&lamax=${this.state.neLat}&lomax=${this.state.swLng}`
-    );
+    const response = await Axios.get`https://Cherokee235:Ilike2Fly@opensky-network.org/api/states/all?lamin=42.355&lomin=-91.15&lamax=43.9&lomax=-86.6`;
     this.setState({
       activeFlights: response.data.states,
     });
@@ -43,9 +42,9 @@ class Home extends Component {
       sw: sw.lng(),
     });
   };
-  handleMarkerClick = (flight) => {
-    this.setState({ selectedFlight: flight });
-  };
+  //   handleMarkerClick = (flight) => {
+  //     this.setState({ selectedFlight: flight });
+  //   };
   render() {
     const GoogleMapExample = withScriptjs(
       withGoogleMap((props) => (
@@ -57,19 +56,20 @@ class Home extends Component {
           defaultCenter={{ lat: 43.43, lng: -88.7 }}
           defaultZoom={10}
         >
-          {this.state.activeFlights.map((flight) => (
+          {/* {this.state.activeFlights.map((flight) => (
             <Marker
               key={flight[0]}
               position={{
                 lat: flight[6],
                 lng: flight[5],
               }}
-              onClick={(e) => {
-                // e.preventDefault();
-                this.setState({ selectedFlight: flight });
-                console.log(this.state.selectedFlight);
-              }}
-            />
+              //   onClick={this.handleMarkerClick(flight)}
+
+              //     e.preventDefault();
+              //     this.setState({ selectedFlight: flight });
+              //     console.log(this.state.selectedFlight);
+              //   }}
+            /> */}
           ))}
           {/* {this.state.selectedFlight && (
             <InfoWindow
@@ -96,11 +96,12 @@ class Home extends Component {
         </div>
         <GoogleMapExample
           onMapIdle={() => {
-            // this.getMapExtents();
-            let ne = this.map.getBounds().getNorthEast();
-            let sw = this.map.getBounds().getSouthWest();
-            console.log(ne.lat() + ";" + ne.lng());
-            console.log(sw.lat() + ";" + sw.lng());
+            this.getMapExtents();
+            // let ne = this.map.getBounds().getNorthEast();
+            // let sw = this.map.getBounds().getSouthWest();
+            // console.log("ne", ne);
+            // console.log(ne.lat() + ";" + ne.lng());
+            // console.log(sw.lat() + ";" + sw.lng());
           }}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBxarPXcJpq8mYO-JH6XwEIFr7EwljDAaY`}
           loadingElement={<div style={{ height: `100%` }} />}

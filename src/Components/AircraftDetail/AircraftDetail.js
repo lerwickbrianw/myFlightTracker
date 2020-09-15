@@ -6,13 +6,10 @@ class AircraftDetail extends Component {
   constructor(props) {
     super(props);
   }
-  //   handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     console.log(event.target.aircraftDetail.value);
-  //     this.props.aircraftDetail(event);
-  //   };
+
   render() {
-    const aircraftPhotos = this.props.aircraftPhotos.map((item, index) => {
+    const aircraftPhotosArray = this.props.aircraftPhotos || [];
+    const aircraftPhotos = aircraftPhotosArray.map((item, index) => {
       return (
         <div className="photos">
           <a href={item.link} target="_blank">
@@ -32,14 +29,6 @@ class AircraftDetail extends Component {
             placeholder="Tail Number..."
           />
           <input type="submit" value="Search" />
-
-          {/* <Button
-            className="getweather"
-            // onClick={this.props.aircraftDetail}
-            variant="secondary"
-          >
-            Search
-          </Button> */}
         </form>
         <div className="AircraftDetailsContainer">
           <div className="Heading">
