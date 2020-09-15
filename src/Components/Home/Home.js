@@ -26,6 +26,7 @@ class Home extends Component {
       activeFlights: [],
       selectedFlight: null,
       infoOpen: false,
+      mapRef: null,
     };
   }
   componentDidMount = async () => {
@@ -35,31 +36,51 @@ class Home extends Component {
     this.setState({
       activeFlights: response.data.states,
     });
-    console.log(this.state.activeFlights[0][1]);
+    // console.log(this.state.activeFlights[0][1]);
   };
-  getMapExtents = () => {
-    let ne = this.map.getBounds().getNorthEast();
-    let sw = this.map.getBounds().getSouthWest();
-    console.log(ne.lat() + ";" + ne.lng());
-    console.log(sw.lat() + ";" + sw.lng());
-    this.setState({
-      neLat: ne.lat(),
-      neLng: ne.lng(),
-      sw: sw.lat(),
-      sw: sw.lng(),
-    });
+  loadHandler = (map) => {
+    // Store a reference to the google map instance in state
+    // setMapRef(map);
+    this.setState({ mapRef: map });
+    // Fit map bounds to contain all markers
+    // this.fitBounds(map);
+    this.getMapBounds(map);
   };
+  // fitBounds = (map) => {
+  //   const bounds = new window.google.maps.Map(getBounds());
+  //   // locations.map((place) => {
+  //   //   bounds.extend({ lat: place.lat, lng: place.lng });
+  //   //   return place.uid;
+  //   console.log(bounds);
+  // };
+  // map.fitBounds(bounds);
+  getMapBounds = (map, maps) => {
+    const bounds = new window.google.maps.LatLngBounds();
+    console.log(bounds);
+  };
+  // getMapExtents = () => {
+  //   let ne = this.map.getBounds().getNorthEast();
+  //   let sw = this.map.getBounds().getSouthWest();
+  //   console.log(ne.lat() + ";" + ne.lng());
+  //   console.log(sw.lat() + ";" + sw.lng());
+  //   this.setState({
+  //     neLat: ne.lat(),
+  //     neLng: ne.lng(),
+  //     swLat: sw.lat(),
+  //     swLng: sw.lng(),
+  //   });
+  // };
   render() {
     const activeFlights = this.state.activeFlights.map((flight, index) => {
       return (
         <div className="flights" key={flight.index}>
           <div className="divf">{flight[1]}</div>
           <div className="divf">{flight[2]}</div>
-          <div className="divf">{flight[7]}</div>
+          <div className="divf">{(flight[7] * 3.281).toFixed(0)}</div>
           <div className="divf">{flight[8]}</div>
-          <div className="divf">{flight[9]}</div>
-          <div className="divf">{flight[10]}</div>
-          <div className="divf">{flight[11]}</div>
+          <div className="divf">{(flight[9] * 2.237).toFixed(0)}</div>
+          <div className="divf">{flight[10].toFixed(0)}</div>
+          <div className="divf">{(flight[11] * 197).toFixed(0)}</div>
         </div>
       );
     });
@@ -85,7 +106,10 @@ class Home extends Component {
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
-            onLoad={this.handleMapLoad}
+            onLoad={this.loadHandler}
+            // onBoundsChanged={(e) => {
+            //   console.log("map bounds", this.state.mapRef.current.getBounds());
+            // }}
           >
             {this.state.activeFlights.map((flight) => (
               <Marker
@@ -112,7 +136,15 @@ class Home extends Component {
                 }}
               >
                 <div>
-                  <h1>{this.state.selectedFlight[1]}</h1>
+                  <p>
+                    {this.state.selectedFlight[1]}{" "}
+                    {(this.state.selectedFlight[7] * 3.281).toFixed(0)}{" "}
+                    {(this.state.selectedFlight[9] * 2.237).toFixed(0)}
+                  </p>
+                  <p>
+                    {this.state.selectedFlight[10].toFixed(0)}{" "}
+                    {(this.state.selectedFlight[11] * 197).toFixed(0)}
+                  </p>
                 </div>
               </InfoWindow>
             )}
