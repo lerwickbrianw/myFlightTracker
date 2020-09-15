@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./AircraftDetail.css";
-import Button from "react-bootstrap/Button";
 
 class AircraftDetail extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class AircraftDetail extends Component {
       return (
         <div className="photos">
           <a href={item.link} target="_blank">
-            <img style={{ height: 200 }} key={index} src={item.image} />
+            <img style={{ height: 200 }} key={index} src={item.image} alt="" />
           </a>
         </div>
       );
