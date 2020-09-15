@@ -4,4 +4,71 @@
   justify-content: space-between;
   align-items: flex-start;
   padding-right: 20px;
+  /* border: 2px solid green; */
+}
+.flightTxt {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+.divf {
+  width: 150px;
+  height: 100px;
+  text-align: center;
+}
+.flights {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(8, auto);
+  grid-auto-rows: 20px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 1200px;
+  font-size: large;
+  /* border: 2px solid green; */
+  text-align: left;
+}
+.flightdetailscontainer {
+  overflow: scroll;
+  height: 300px;
+}
+.flightcontainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: solid red; */
+  height: 200px;
+}
+.flightheading {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(8, auto);
+  grid-auto-rows: 30px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 1200px;
+  font-style: bold;
+  font-size: x-large;
+  border: solid black;
+  text-decoration: underline;
+  background-color: lightgrey;
+}
+/* .AirportDetailsContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 2px solid red;
+  /* border: 1px solid red; */
+
+/* .Heading {
+  text-align: right;
+  padding-right: 10px;
+  border: 2px solid green;
+  /* border: 1px solid green; */
+
+.headingTxt {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 15px;
 }
