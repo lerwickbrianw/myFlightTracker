@@ -63,3 +63,5 @@ AIzaSyBxarPXcJpq8mYO-JH6XwEIFr7EwljDAaY
 2. Controllers files
 3. Models files
 4. Axios calls to opensky apis
+
+Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
