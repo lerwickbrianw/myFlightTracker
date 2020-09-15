@@ -92,11 +92,11 @@ class Home extends Component {
             <div className="flightheading">
               <div className="divf">Tail Number</div>
               <div className="divf">Origin</div>
-              <div className="divf">Baro Altitude</div>
+              <div className="divf">Altitude(ft.)</div>
               <div className="divf">On Ground</div>
-              <div className="divf">Velocity</div>
-              <div className="divf">True Track</div>
-              <div className="divf">Verticle Rate</div>
+              <div className="divf">Velocity(kts)</div>
+              <div className="divf">Heading(°)</div>
+              <div className="divf">Verticle(ft/s)</div>
             </div>
             <div className="flightdetailscontainer">{activeFlights}</div>
           </div>
