@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import "./Home.css";
 import {
+  useGoogleMap,
   LoadScript,
   GoogleMap,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
 import Axios from "axios";
+// import vector from "plane.svg";
+
 const containerStyle = {
   width: "100%",
   height: "800px",
@@ -15,6 +18,10 @@ const center = {
   lat: 43.43,
   lng: -88.7,
 };
+const onLoad = (infoWindow) => {
+  console.log("infoWindow: ", infoWindow);
+};
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +32,18 @@ class Home extends Component {
       swLng: "-87.597247",
       activeFlights: [],
       selectedFlight: null,
-      infoOpen: false,
     };
+    // this.map = React.createRef();
+    // state = { map: {} };
+
+    // boundsCallBack = () => {
+    //   const { map } = this.state;
+    //   console.log("map: ", map);
+    // };
+
+    // handleMapLoad = (map) => {
+    //   this.setState((state) => ({ ...state, map }));
+    // };
   }
   componentDidMount = async () => {
     const response = await Axios.get(
@@ -38,21 +55,26 @@ class Home extends Component {
     console.log(this.state.activeFlights[0][1]);
   };
   getMapExtents = () => {
-    let ne = this.map.getBounds().getNorthEast();
-    let sw = this.map.getBounds().getSouthWest();
+    const map = useGoogleMap;
+    let ne = map.Bounds().getNorthEast();
+    let sw = map.getBounds().getSouthWest();
     console.log(ne.lat() + ";" + ne.lng());
     console.log(sw.lat() + ";" + sw.lng());
     this.setState({
       neLat: ne.lat(),
       neLng: ne.lng(),
-      sw: sw.lat(),
-      sw: sw.lng(),
+      swLat: sw.lat(),
+      swLng: sw.lng(),
     });
+  };
+  handleMarkerClick = (flight) => {
+    this.setState({ selectedFlight: flight });
   };
   render() {
     const activeFlights = this.state.activeFlights.map((flight, index) => {
       return <li key={index}>{flight}</li>;
     });
+
     return (
       <div>
         <div className="activeFlights">
@@ -65,6 +87,7 @@ class Home extends Component {
             center={center}
             zoom={10}
             onLoad={this.handleMapLoad}
+            // onidle={this.getMapExtents()}
           >
             {this.state.activeFlights.map((flight) => (
               <Marker
@@ -75,28 +98,51 @@ class Home extends Component {
                   lng: flight[5],
                 }}
                 onClick={(e) => {
-                  this.setState({
-                    selectedFlight: flight,
-                    infoOpen: !this.state.infoOpen,
-                  });
+                  //           // e.preventDefault();
+                  this.setState({ selectedFlight: flight });
+                  console.log(this.state.selectedFlight);
                 }}
-              />
-            ))}
-            {this.state.infoOpen && this.state.selectedFlight && (
+
+            // ))}
+            // {this.state.selectedFlight && (
               <InfoWindow
-                onCloseClick={() => this.setState({ infoOpen: false })}
+                onLoad={onLoad}
                 position={{
-                  lat: this.state.selectedFlight[6],
+                  // lat: this.state.selectedFlight[6],
                   lng: this.state.selectedFlight[5],
+                  lat: 43.43,
+                  lng: -88.7,
                 }}
               >
                 <div>
-                  <h1>{this.state.selectedFlight[1]}</h1>
+                  <h1>InfoWindow</h1>
                 </div>
               </InfoWindow>
-            )}
+            )}    
+            </Marker>
           </GoogleMap>
         </LoadScript>
+        {/* <GoogleMapExample
+          onIdle={() => {
+            console.log(this);
+            // this.getMapExtents();
+            let ne = this.map.getBounds().getNorthEast();
+            let sw = this.map.getBounds().getSouthWest();
+            console.log(ne.lat() + ";" + ne.lng());
+            console.log(sw.lat() + ";" + sw.lng());
+            // this.setState({
+            //   neLat: ne.lat(),
+            //   neLng: ne.lng(),
+            //   sw: sw.lat(),
+            //   sw: sw.lng(),
+            // });
+          }}
+          // onMapIDle={this.getMapExtents()}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyBxarPXcJpq8mYO-JH6XwEIFr7EwljDAaY`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `800px` }} />}
+          mapElement={<div style={{ height: `100%` }} />} */}
+        />
       </div>
     );
   }

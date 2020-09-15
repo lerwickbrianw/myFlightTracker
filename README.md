@@ -65,3 +65,5 @@ AIzaSyBxarPXcJpq8mYO-JH6XwEIFr7EwljDAaY
 4. Axios calls to opensky apis
 
 Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+
+http://maps.google.com/mapfiles/kml/pal2/icon56.png
