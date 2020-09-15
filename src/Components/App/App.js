@@ -66,9 +66,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="navHeader">
-          <Link to="/">myFlightTracker</Link>
-          <Link to="/api/airport">Airport</Link>
-          <Link to="/api/aircraft">Aircraft</Link>
+          <Link to="/">
+            <button type="button">myFlightTracker</button>
+          </Link>
+          <Link to="/api/airport">
+            <button type="button">Airport</button>
+          </Link>
+
+          <Link to="/api/aircraft">
+            <button type="button">Aircraft</button>
+          </Link>
         </header>
         <main>
           <Switch>

@@ -53,20 +53,6 @@
   text-decoration: underline;
   background-color: lightgrey;
 }
-/* .AirportDetailsContainer {
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border: 2px solid red;
-  /* border: 1px solid red; */
-
-/* .Heading {
-  text-align: right;
-  padding-right: 10px;
-  border: 2px solid green;
-  /* border: 1px solid green; */
-
 .headingTxt {
   font-size: 30px;
   font-weight: bold;
