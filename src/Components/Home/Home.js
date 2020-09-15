@@ -79,7 +79,7 @@ class Home extends Component {
           <div className="divf">{flight[2]}</div>
           <div className="divf">{(flight[7] * 3.281).toFixed(0)}</div>
           <div className="divf">{flight[8]}</div>
-          <div className="divf">{(flight[9] * 2.237).toFixed(0)}</div>
+          <div className="divf">{(flight[9] * 1.944).toFixed(0)}</div>
           <div className="divf">{flight[10].toFixed(0)}</div>
           <div className="divf">{(flight[11] * 197).toFixed(0)}</div>
         </div>
@@ -140,12 +140,12 @@ class Home extends Component {
                 <div>
                   <p>
                     {this.state.selectedFlight[1]}{" "}
-                    {(this.state.selectedFlight[7] * 3.281).toFixed(0)}{" "}
-                    {(this.state.selectedFlight[9] * 2.237).toFixed(0)}
+                    {(this.state.selectedFlight[7] * 3.281).toFixed(0)}ft{" "}
+                    {(this.state.selectedFlight[9] * 1.944).toFixed(0)}kts
                   </p>
                   <p>
-                    {this.state.selectedFlight[10].toFixed(0)}{" "}
-                    {(this.state.selectedFlight[11] * 197).toFixed(0)}
+                    {this.state.selectedFlight[10].toFixed(0)}°{" "}
+                    {(this.state.selectedFlight[11] * 197).toFixed(0)}ft/min
                   </p>
                 </div>
               </InfoWindow>
