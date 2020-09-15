@@ -71,7 +71,6 @@ class Home extends Component {
     const activeFlights = this.state.activeFlights.map((flight, index) => {
       return (
         <div className="flights" key={flight.index}>
-          <div className="divf">{flight[0]}</div>
           <div className="divf">{flight[1]}</div>
           <div className="divf">{flight[2]}</div>
           <div className="divf">{flight[7]}</div>
@@ -89,7 +88,6 @@ class Home extends Component {
           <div className="flightTxt">Active Flights</div>
           <div className="flightcontainer">
             <div className="flightheading">
-              <div className="divf">ICAO24</div>
               <div className="divf">Tail Number</div>
               <div className="divf">Origin</div>
               <div className="divf">Baro Altitude</div>

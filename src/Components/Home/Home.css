@@ -42,7 +42,7 @@
 .flightheading {
   display: grid;
   align-content: center;
-  grid-template-columns: repeat(8, auto);
+  grid-template-columns: repeat(7, auto);
   grid-auto-rows: 30px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
