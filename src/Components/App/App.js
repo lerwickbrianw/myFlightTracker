@@ -18,6 +18,9 @@ class App extends Component {
       aircraftPhotos: [],
       airportDetail: "",
       airportRunways: [],
+      beginTime: (Date.now() / 1000 - 2592000).toFixed(0),
+      endTime: (Date.now() / 1000).toFixed(0),
+      aircraftFlights: [],
     };
   }
 
@@ -47,20 +50,28 @@ class App extends Component {
     console.log(this.state.aircraftDetail);
     console.log(response);
     this.getAircraftPhotos();
+    this.getAircraftFlights();
   };
 
   getAircraftPhotos = async (event) => {
-    // event.preventDefault();
     console.log(this.state.aircraftDetail.icao24);
-    // let response = await axios.get`https://www.airport-data.com/api/ac_thumb.json?m=a10063&n=10`;
     let response = await axios.get(
       `https://www.airport-data.com/api/ac_thumb.json?m=${this.state.aircraftDetail.icao24}&n=10`
     );
-    console.log(response.data.data);
     this.setState({
       aircraftPhotos: response.data.data,
     });
     console.log(this.state.aircraftPhotos);
+  };
+  getAircraftFlights = async (event) => {
+    let response = await axios.get(
+      `https://cherokee235:Ilike2Fly@opensky-network.org/api/flights/aircraft?icao24=a10063&begin=1597626245&end=1600218245`
+    );
+    console.log(response.data);
+    this.setState({
+      aircraftFlights: response.data,
+    });
+    console.log(this.state.aircraftFlights);
   };
   render() {
     return (
@@ -97,12 +108,14 @@ class App extends Component {
               path="/api/aircraft"
               handleChange={this.handleChange}
               aircraftDetail={this.state.aircraftDetail}
+              aircraftFlights={this.state.aircraftFlights}
               component={(routerProps) => (
                 <AircraftDetail
                   {...this.state}
                   {...routerProps}
                   getAircraftDetail={this.getAircraftDetail}
                   getAircraftPhotos={this.getAircraftPhotos}
+                  getAircraftFlights={this.getAircraftFlights}
                 />
               )}
             />

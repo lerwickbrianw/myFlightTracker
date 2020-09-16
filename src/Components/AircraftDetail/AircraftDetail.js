@@ -17,6 +17,17 @@ class AircraftDetail extends Component {
         </div>
       );
     });
+    const aircraftFlightsArray = this.props.aircraftFlights || [];
+    const aircraftFlights = aircraftFlightsArray.map((flight, id) => {
+      return (
+        <div key={flight.id}>
+          <div>{flight.firstSeen}</div>
+          <div>{flight.estDepartureAirport}</div>
+          <div>{flight.lastSeen}</div>
+          <div>{flight.estArrivalAirport}</div>
+        </div>
+      );
+    });
     return (
       <div>
         <div className="headingTxt">Aircraft Details</div>
@@ -55,6 +66,16 @@ class AircraftDetail extends Component {
         </div>
         <div className="headingTxt">Photos</div>
         <div className="photos">{aircraftPhotos}</div>
+        <div className="headingTxt">Past Flight Information</div>
+        <div className="pastFlightsContainer">
+          <div className="pastFlightsParent">
+            <div>Departure Time</div>
+            <div>Departure Airport</div>
+            <div>Arrival Time</div>
+            <div>Arrial Airport</div>
+          </div>
+          <div> {aircraftFlights}</div>
+        </div>
       </div>
     );
   }

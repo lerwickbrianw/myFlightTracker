@@ -7,6 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 const containerStyle = {
   width: "100%",
   height: "800px",
@@ -74,7 +75,9 @@ class Home extends Component {
     const activeFlights = this.state.activeFlights.map((flight, index) => {
       return (
         <div className="flights" key={flight.index}>
-          <div className="divf">{flight[1]}</div>
+          <Link to="{`FlightDetails/${flight[1]`}" className="divf">
+            {flight[1]}
+          </Link>
           <div className="divf">{flight[2]}</div>
           <div className="divf">{(flight[7] * 3.281).toFixed(0)}</div>
           <div className="divf">{flight[8]}</div>
@@ -124,6 +127,7 @@ class Home extends Component {
                     selectedFlight: flight,
                     infoOpen: !this.state.infoOpen,
                   });
+                  console.log(this.state.selectedFlight);
                 }}
               />
             ))}
