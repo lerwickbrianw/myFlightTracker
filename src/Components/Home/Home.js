@@ -79,7 +79,7 @@ class Home extends Component {
           <div className="divf">{flight[1]} </div>
           <div className="divf">{flight[2]}</div>
           <div className="divf">{(flight[7] * 3.281).toFixed(0)}</div>
-          <div className="divf">{String(flight[8])}</div>
+          <div className="divf">{String(flight[8]) ? "No" : "Yes"}</div>
           <div className="divf">{(flight[9] * 1.944).toFixed(0)}</div>
           <div className="divf">{flight[10].toFixed(0)}</div>
           <div className="divf">{(flight[11] * 197).toFixed(0)}</div>
