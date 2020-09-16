@@ -117,14 +117,20 @@ class App extends Component {
       <div className="App">
         <header className="navHeader">
           <Link to="/">
-            <button type="button">myFlightTracker</button>
+            <button className="button" type="button">
+              myFlightTracker
+            </button>
           </Link>
           <Link to="/api/airport">
-            <button type="button">Airport</button>
+            <button className="button" type="button">
+              Airport
+            </button>
           </Link>
 
           <Link to="/api/aircraft">
-            <button type="button">Aircraft</button>
+            <button className="button" type="button">
+              Aircraft
+            </button>
           </Link>
         </header>
         <main>

@@ -34,6 +34,7 @@ class Home extends Component {
     const response = await Axios.get(
       `https://Cherokee235:Ilike2Fly@opensky-network.org/api/states/all?lamin=${this.state.swLat}&lomin=${this.state.neLng}&lamax=${this.state.neLat}&lomax=${this.state.swLng}`
     );
+    console.log(response);
     this.setState({
       activeFlights: response.data.states,
     });
@@ -75,12 +76,10 @@ class Home extends Component {
     const activeFlights = this.state.activeFlights.map((flight, index) => {
       return (
         <div className="flights" key={flight.index}>
-          <Link to="{`FlightDetails/${flight[1]`}" className="divf">
-            {flight[1]}
-          </Link>
+          <div className="divf">{flight[1]} </div>
           <div className="divf">{flight[2]}</div>
           <div className="divf">{(flight[7] * 3.281).toFixed(0)}</div>
-          <div className="divf">{flight[8]}</div>
+          <div className="divf">{String(flight[8]) ? "No" : "Yes"}</div>
           <div className="divf">{(flight[9] * 1.944).toFixed(0)}</div>
           <div className="divf">{flight[10].toFixed(0)}</div>
           <div className="divf">{(flight[11] * 197).toFixed(0)}</div>
@@ -97,9 +96,9 @@ class Home extends Component {
               <div className="divf">Origin</div>
               <div className="divf">Altitude(ft.)</div>
               <div className="divf">On Ground</div>
-              <div className="divf">Velocity(kts)</div>
+              <div className="divf">Velocity</div>
               <div className="divf">Heading(°)</div>
-              <div className="divf">Verticle(ft/s)</div>
+              <div className="divf">Vertical(ft/s)</div>
             </div>
             <div className="flightdetailscontainer">{activeFlights}</div>
           </div>
