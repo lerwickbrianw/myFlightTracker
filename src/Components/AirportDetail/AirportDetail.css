@@ -24,15 +24,25 @@ body {
   padding-bottom: 20px;
   /* border: 1px solid red; */
 }
+.airport {
+  display: flex;
+  border: 1px solid green;
+  padding-right: 100px;
+}
 .Heading {
   text-align: right;
   padding-right: 10px;
+  border: 1px solid purple;
 }
 .Values {
   /* display: flex; */
   justify-content: flex-start;
   text-align: left;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
+}
+.weather {
+  display: flex;
+  border: 1px solid magenta;
 }
 .photos {
   display: flex;

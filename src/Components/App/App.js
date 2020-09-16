@@ -21,6 +21,19 @@ class App extends Component {
       beginTime: (Date.now() / 1000 - 2592000).toFixed(0),
       endTime: (Date.now() / 1000).toFixed(0),
       aircraftFlights: [],
+      altimeter: "",
+      clouds: [],
+      dewpoint: "",
+      flightRules: "",
+      sanitized: "",
+      temperature: "",
+      time: "",
+      visibility: "",
+      windDirection: "",
+      windDirRepr: "",
+      windGust: "",
+      windSpeed: "",
+      windVariableDir: [],
     };
   }
 
@@ -33,7 +46,33 @@ class App extends Component {
       airportDetail: response.data.airport,
       airportRunways: response.data.runways,
     });
+    this.getAirportWeather();
     console.log(response.data.runways);
+  };
+  getAirportWeather = async (event) => {
+    console.log(this.state.airportDetail);
+    let airportId = this.state.airportDetail.icaoId;
+    console.log(airportId);
+    let response = await axios.get(
+      `https://avwx.rest/api/metar/${airportId}?token=fcax4RruAa_kWpUbkNvd-K73MayQTBYAxg6ZLYUVwfY`
+    );
+    console.log(response.data);
+    this.setState({
+      altimeter: response.data.altimeter.value,
+      clouds: response.data.clouds,
+      dewpoint: response.data.dewpoint.value,
+      flightRules: response.data.flight_rules,
+      sanitized: response.data.sanitized,
+      temperature: response.data.temperature.value,
+      time: response.data.time.repr,
+      visibility: response.data.visibility.value,
+      windDirection: response.data.wind_direction.value,
+      windDirRepr: response.data.wind_direction.repr,
+      windGust: response.data.wind_gust.value,
+      windSpeed: response.data.wind_speed.value,
+      windVariableDir: response.data.wind_variable_direction,
+    });
+    console.log(this.state.visibility);
   };
 
   getAircraftDetail = async (event) => {
@@ -101,6 +140,7 @@ class App extends Component {
                   {...this.state}
                   {...routerProps}
                   getAirportDetail={this.getAirportDetail}
+                  getAirportWeather={this.getAirportWeather}
                 />
               )}
             ></Route>
