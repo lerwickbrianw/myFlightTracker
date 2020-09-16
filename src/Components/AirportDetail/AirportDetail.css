@@ -45,3 +45,40 @@ body {
   font-weight: bold;
   padding-bottom: 15px;
 }
+.divf {
+  width: 150px;
+  height: 100px;
+  text-align: center;
+}
+.pastFlightsContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: solid red; */
+  height: 200px;
+}
+.pastFlightsParent {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(4, auto);
+  grid-auto-rows: 22px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 1200px;
+  font-style: bold;
+  font-size: large;
+  border: solid black;
+  text-decoration: underline;
+  background-color: lightgrey;
+}
+.pflights {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(4, auto);
+  grid-auto-rows: 20px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 1200px;
+  /* font-size: large; */
+  text-align: left;
+}

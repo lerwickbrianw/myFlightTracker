@@ -17,14 +17,19 @@ class AircraftDetail extends Component {
         </div>
       );
     });
+
     const aircraftFlightsArray = this.props.aircraftFlights || [];
     const aircraftFlights = aircraftFlightsArray.map((flight, id) => {
       return (
-        <div key={flight.id}>
-          <div>{flight.firstSeen}</div>
-          <div>{flight.estDepartureAirport}</div>
-          <div>{flight.lastSeen}</div>
-          <div>{flight.estArrivalAirport}</div>
+        <div className="pflights" key={flight.id}>
+          <div className="divA">
+            {new Date(flight.firstSeen * 1000).toLocaleDateString()}{" "}
+            {new Date(flight.firstSeen * 1000).toLocaleTimeString()}
+          </div>
+          <div className="divA">{flight.estDepartureAirport}</div>
+          {new Date(flight.lastSeen * 1000).toLocaleDateString()}{" "}
+          {new Date(flight.lastSeen * 1000).toLocaleTimeString()}
+          <div className="divA">{flight.estArrivalAirport}</div>
         </div>
       );
     });
@@ -69,10 +74,10 @@ class AircraftDetail extends Component {
         <div className="headingTxt">Past Flight Information</div>
         <div className="pastFlightsContainer">
           <div className="pastFlightsParent">
-            <div>Departure Time</div>
-            <div>Departure Airport</div>
-            <div>Arrival Time</div>
-            <div>Arrial Airport</div>
+            <div className="divA">Departure Time</div>
+            <div className="divA">Departure Airport</div>
+            <div className="divA">Arrival Time</div>
+            <div className="divA">Arrival Airport</div>
           </div>
           <div> {aircraftFlights}</div>
         </div>
