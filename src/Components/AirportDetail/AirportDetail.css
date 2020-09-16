@@ -23,23 +23,23 @@
 }
 .airport {
   display: flex;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   padding-right: 100px;
 }
 .Heading {
   text-align: right;
   padding-right: 10px;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 }
 .Values {
   /* display: flex; */
   justify-content: flex-start;
   text-align: left;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 .weather {
   display: flex;
-  border: 1px solid magenta;
+  /* border: 1px solid magenta; */
 }
 
 .headingTxt {
@@ -76,3 +76,11 @@
   text-decoration: underline;
   background-color: black;
 }
+/* .airport {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  border: 1px solid green;
+}
+.airportHeading {
+  display: grid;
+} */

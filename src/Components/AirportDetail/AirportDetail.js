@@ -36,14 +36,16 @@ class AirportDetail extends Component {
         <div className="AirportDetailsContainer">
           <div className="airport">
             <div className="Heading">
-              <div>Name: </div>
-              <div>City: </div>
-              <div>State: </div>
-              <div>Icao24: </div>
-              <div>Ident: </div>
-              <div>Latitude: </div>
-              <div>Logitude: </div>
-              <div>Elevation: </div>
+              <div className="airportHeading">
+                <div>Name: </div>
+                <div>City: </div>
+                <div>State: </div>
+                <div>Icao24: </div>
+                <div>Ident: </div>
+                <div>Latitude: </div>
+                <div>Logitude: </div>
+                <div>Elevation: </div>
+              </div>
             </div>
             <div className="Values">
               <div>{this.props.airportDetail.name}</div>
@@ -57,20 +59,19 @@ class AirportDetail extends Component {
             </div>
           </div>
           <div className="weather">
-            <div className="Values">
+            <div className="Heading">
               <div>Flight Rules:</div>
-              <div>METAR:</div>
               <div>Time:</div>
               <div>Wind:</div>
               <div>Visibility (sm):</div>
-              <div>Clouds (AGL):</div>
               <div>Temperature:</div>
               <div>Dewpoint</div>
               <div>Altimeter:</div>
+              <div>Clouds (AGL):</div>
+              {/* <div>METAR:</div> */}
             </div>
-            <div className="Heading">
+            <div className="Values">
               <div>{this.props.flightRules}</div>
-              <div>{this.props.sanitized}</div>
               <div>{this.props.time}</div>
               <div>
                 {`${this.props.windDirection || this.props.windDirRepr} at ${
@@ -78,18 +79,18 @@ class AirportDetail extends Component {
                 }   Gust ${this.props.windGust}              
                 `}
               </div>
-              {/* <div>Wind Speed:{this.props.windSpeed}</div> */}
-              {/* <div>{this.props.windGust}</div> */}
               <div>{this.props.visibility}</div>
-              <div>
-                {this.props.clouds.map((cloud, id) => {
-                  return <div>{cloud.repr ? `${cloud.repr}` : "Clear"}</div>;
-                })}
-              </div>
               <div>{this.props.temperature}</div>
               <div>{this.props.dewpoint}</div>
-              {/* <div>Wind Variable Direction:{this.props.windVariableDir}</div> */}
               <div>{this.props.altimeter}</div>
+              <div>
+                {this.props.clouds.map((cloud, id) => {
+                  return (
+                    <div key={id}>{cloud.repr ? `${cloud.repr}` : "Clear"}</div>
+                  );
+                })}
+              </div>
+              {/* <div>{this.props.sanitized}</div> */}
             </div>
           </div>
         </div>
@@ -100,8 +101,8 @@ class AirportDetail extends Component {
             <div className="divR">Length</div>
             <div className="divR">Width</div>
             <div className="divR">Surface</div>
-            <div className="divR">Lightintns</div>
-            <div className="divR">Lightactv</div>
+            <div className="divR">Lighting Intensity</div>
+            <div className="divR">Light Activation</div>
           </div>
           {airportRunways}
         </div>

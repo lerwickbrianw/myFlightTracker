@@ -58,8 +58,7 @@ class App extends Component {
     );
     console.log(response.data);
     this.setState({
-      altimeter: response.data.altimeter.value,
-      clouds: response.data.clouds,
+      altimeter: response.data.altimeter.value.toFixed(2),
       dewpoint: response.data.dewpoint.value,
       flightRules: response.data.flight_rules,
       sanitized: response.data.sanitized,
@@ -68,17 +67,25 @@ class App extends Component {
       visibility: response.data.visibility.value,
       windDirection: response.data.wind_direction.value,
       windDirRepr: response.data.wind_direction.repr,
-      // windGust: response.data.wind_gust.value,
       windSpeed: response.data.wind_speed.value,
       windVariableDir: response.data.wind_variable_direction,
     });
     if (!response.data.wind_gust) {
       this.setState({
-        windGust: "",
+        windGust: 0,
       });
     } else {
       this.setState({
         windGust: response.data.wind_gust.value,
+      });
+    }
+    if (!response.data.clouds) {
+      this.setState({
+        clouds: "Clear",
+      });
+    } else {
+      this.setState({
+        clouds: response.data.clouds,
       });
     }
     console.log(this.state.clouds);
