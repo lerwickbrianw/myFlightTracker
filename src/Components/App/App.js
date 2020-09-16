@@ -65,7 +65,7 @@ class App extends Component {
   };
   getAircraftFlights = async (event) => {
     let response = await axios.get(
-      `https://cherokee235:Ilike2Fly@opensky-network.org/api/flights/aircraft?icao24=a10063&begin=1597626245&end=1600218245`
+      `https://cherokee235:Ilike2Fly@opensky-network.org/api/flights/aircraft?icao24=${this.state.aircraftDetail.icao24}&begin=${this.state.beginTime}&end=${this.state.endTime}`
     );
     console.log(response.data);
     this.setState({
