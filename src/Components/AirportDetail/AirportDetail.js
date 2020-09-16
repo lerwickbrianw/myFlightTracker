@@ -9,12 +9,12 @@ class AirportDetail extends Component {
     const airportRunways = this.props.airportRunways.map((runway, id) => {
       return (
         <div className="parent" key={runway.id}>
-          <div>{runway.designator}</div>
-          <div>{runway.length}</div>
-          <div>{runway.width}</div>
-          <div>{runway.compcode}</div>
-          <div>{runway.lightintns}</div>
-          <div>{runway.lightactv}</div>
+          <div className="divR">{runway.designator}</div>
+          <div className="divR">{runway.length}</div>
+          <div className="divR">{runway.width}</div>
+          <div className="divR">{runway.compcode}</div>
+          <div className="divR">{runway.lightintns}</div>
+          <div className="divR">{runway.lightactv}</div>
         </div>
       );
     });
@@ -54,13 +54,13 @@ class AirportDetail extends Component {
         </div>
         <div className="headingTxt">Runway Information</div>
         <div className="runwaycontainer">
-          <div className="parent">
-            <div>Designator</div>
-            <div>Length</div>
-            <div>Width</div>
-            <div>Surface</div>
-            <div>Lightintns</div>
-            <div>Lightactv</div>
+          <div className="runwayparent">
+            <div className="divR">Designator</div>
+            <div className="divR">Length</div>
+            <div className="divR">Width</div>
+            <div className="divR">Surface</div>
+            <div className="divR">Lightintns</div>
+            <div className="divR">Lightactv</div>
           </div>
           {airportRunways}
         </div>
