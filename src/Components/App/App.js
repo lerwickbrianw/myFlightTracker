@@ -68,11 +68,20 @@ class App extends Component {
       visibility: response.data.visibility.value,
       windDirection: response.data.wind_direction.value,
       windDirRepr: response.data.wind_direction.repr,
-      windGust: response.data.wind_gust.value,
+      // windGust: response.data.wind_gust.value,
       windSpeed: response.data.wind_speed.value,
       windVariableDir: response.data.wind_variable_direction,
     });
-    console.log(this.state.visibility);
+    if (!response.data.wind_gust) {
+      this.setState({
+        windGust: "",
+      });
+    } else {
+      this.setState({
+        windGust: response.data.wind_gust.value,
+      });
+    }
+    console.log(this.state.clouds);
   };
 
   getAircraftDetail = async (event) => {

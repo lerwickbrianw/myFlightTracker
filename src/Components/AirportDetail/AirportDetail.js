@@ -75,14 +75,15 @@ class AirportDetail extends Component {
               <div>
                 {`${this.props.windDirection || this.props.windDirRepr} at ${
                   this.props.windSpeed
-                } Gust ${this.props.windGust}`}
+                }   Gust ${this.props.windGust}              
+                `}
               </div>
               {/* <div>Wind Speed:{this.props.windSpeed}</div> */}
               {/* <div>{this.props.windGust}</div> */}
               <div>{this.props.visibility}</div>
               <div>
                 {this.props.clouds.map((cloud, id) => {
-                  return <div>{`${cloud.repr} || Clear`}</div>;
+                  return <div>{cloud.repr ? `${cloud.repr}` : "Clear"}</div>;
                 })}
               </div>
               <div>{this.props.temperature}</div>
