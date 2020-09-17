@@ -44,7 +44,7 @@ Ever hear an airplane passing overhead and want to find out as much detail as yo
 
 ### ERD - Backend Database
 
-![Data Flow](/Planning/myFlightTracker_ERD.png)
+![Data Flow](/Planning/myflighttracker_ERD.png)
 
 ## Activities:
 
